@@ -238,7 +238,7 @@ extension APIRequest {
             }
         }
         if !formParams.isEmpty {
-            urlRequest = try URLEncoding.httpBody.encode(urlRequest, with: formParams)
+            urlRequest = try URLEncoding(destination: .queryString, boolEncoding: .literal).encode(urlRequest, with: queryParams)
         }
         if let encodeBody = encodeBody {
             urlRequest.httpBody = try encodeBody(encoder)
